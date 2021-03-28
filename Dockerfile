@@ -14,10 +14,7 @@ ENV GALAXY_CONFIG_TOOL_CONFIG_FILE=config/tool_conf.xml.sample,config/shed_tool_
 ENV GALAXY_DOCKER_ENABLED=True
 
 ## Install environment modules & singularity
-RUN apt-get update --fix-missing \
-    && apt-get install -y wget libssl-dev libssl1.0.0 \
-    && sudo apt-get update \
-    && apt-get install -y environment-modules squashfs-tools libtool libarchive-dev \
+RUN apt-get install -y wget libssl-dev libssl1.0.0 environment-modules squashfs-tools libtool libarchive-dev \
     && git clone https://github.com/lyklev/singularity \
     && cd singularity \
     && ./autogen.sh \
