@@ -17,7 +17,7 @@ ENV GALAXY_DOCKER_ENABLED=True
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && rm /etc/apt/sources.list.d/htcondor.list* \
     && apt-get update \
-    && apt-get install -y wget libssl-dev libssl1.0.0 gnutls \
+    && apt-get install -y wget libssl-dev libssl1.0.0 \
     && apt-get update \
     && apt-get install -y environment-modules squashfs-tools libtool libarchive-dev \
     && git clone https://github.com/lyklev/singularity \
