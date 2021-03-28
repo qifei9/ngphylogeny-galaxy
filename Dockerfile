@@ -21,7 +21,7 @@ RUN apt-get update --fix-missing \
     && git clone https://github.com/lyklev/singularity \
     && cd singularity \
     && ./autogen.sh \
-    && ./configure --prefix=/usr/local --sysconfdir=/etc \
+    && ./configure --prefix=/usr/local \
     && make \
     && make install \
     && cd .. \
