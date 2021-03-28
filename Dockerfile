@@ -18,13 +18,12 @@ RUN apt-get update --fix-missing \
     && apt-get install -y wget libssl-dev libssl1.0.0 \
     && sudo apt-get update \
     && apt-get install -y environment-modules squashfs-tools libtool libarchive-dev \
-    && git clone https://github.com/singularityware/singularity.git \
-    && cd singularity \
-    && git checkout 2.6.0 \
-    && ./autogen.sh \
-    && ./configure --prefix=/usr/local \
-    && make \
-    && make install \
+    && git clone https://github.com/lyklev/singularity
+    && cd singularity
+    && ./autogen.sh
+    && ./configure --prefix=/usr/local --sysconfdir=/etc
+    && make
+    && make install
     && cd .. \
     && rm -rf singularity \
     && apt-get remove -y libssl-dev \
