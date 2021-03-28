@@ -19,7 +19,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && sed -i "/research.cs.wisc.edu/d" /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y wget libssl-dev libssl1.0.0 gnutls \
-    && echo "deb http://research.cs.wisc.edu/htcondor/ubuntu/stable/ precise contrib" >> /etc/apt/sources.list
+    && echo "deb http://research.cs.wisc.edu/htcondor/ubuntu/stable/ precise contrib" >> /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y environment-modules squashfs-tools libtool libarchive-dev \
     && git clone https://github.com/lyklev/singularity \
