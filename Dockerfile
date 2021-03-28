@@ -15,9 +15,11 @@ ENV GALAXY_DOCKER_ENABLED=True
 
 ## Install environment modules & singularity
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && curl -sS https://research.cs.wisc.edu/htcondor/ubuntu/HTCondor-Release.gpg.key | sudo apt-key add - \
-    && apt-get update --fix-missing \
-    && apt-get install -y wget libssl-dev libssl1.0.0 \
+    && curl -sS https://research.cs.wisc.edu/htcondor/ubuntu/HTCondor-Release.gpg.key | apt-key add - \
+    && sed -i "/research.cs.wisc.edu/d/" /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y wget libssl-dev libssl1.0.0 gnutls \
+    && echo "deb http://research.cs.wisc.edu/htcondor/ubuntu/stable/ precise contrib" >> /etc/apt/sources.list
     && apt-get update \
     && apt-get install -y environment-modules squashfs-tools libtool libarchive-dev \
     && git clone https://github.com/lyklev/singularity \
