@@ -15,11 +15,12 @@ ENV GALAXY_DOCKER_ENABLED=True
 
 ## Install environment modules & singularity
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && rm /etc/apt/sources.list.d/htcondor.list* \
+    && mv /etc/apt/sources.list.d/htcondor.list* /tmp \
     && apt-get update \
     && apt-get install -y wget libssl-dev libssl1.0.0 \
     && apt-get update \
     && apt-get install -y environment-modules squashfs-tools libtool libarchive-dev \
+    && mv /tmp/htcondor.list* /etc/apt/sources.list.d/ \
     && git clone https://github.com/lyklev/singularity \
     && cd singularity \
     && ./autogen.sh \
